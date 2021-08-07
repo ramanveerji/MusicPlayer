@@ -75,7 +75,7 @@ RADIO_TITLE=os.environ.get("RADIO_TITLE", " 🎸 Music 24/7 | Radio Mode")
 if RADIO_TITLE=="NO":
     RADIO_TITLE = None
 
-class MusicPlayer(object):
+class RSMusicBOTRadioRailway(object):
     def __init__(self):
         self.group_call = GroupCallFactory(USER, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM).get_file_group_call()
 
@@ -307,7 +307,7 @@ class MusicPlayer(object):
         return admins
         
 
-mp = MusicPlayer()
+mp = RSMusicBOTRadioRailway()
 
 # pytgcalls handlers
 @mp.group_call.on_network_status_changed
