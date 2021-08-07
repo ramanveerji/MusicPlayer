@@ -11,6 +11,9 @@ Copyright permission under MIT License
 License -> https://github.com/subinps/MusicPlayer/blob/master/LICENSE
 
 ```
+## Stream URL
+
+http://node-21.zeno.fm/1k0y9f0cm0quv?listening-from-radio-garden=1626524916402&rj-tok=AAABerR5zA8ASfY9spgN8pteIw&rj-ttl=5
 
 ## Deploy to Heroku
 
