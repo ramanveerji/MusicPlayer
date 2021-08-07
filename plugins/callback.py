@@ -32,34 +32,34 @@ HELP = """
 
 Start a VoiceChat
 
-Use /play <song name> or use /play as a reply to an audio file or youtube link.
+Use /p <song name> or use /p as a reply to an audio file or youtube link.
 
-You can also use /dplay <song name> to play a song from Deezer.</b>
+You can also use /d <song name> to play a song from Deezer.</b>
 
 **Common Commands**:
 
-**/play**  Reply to an audio file or YouTube link to play it or use /play <song name>.
-**/dplay** Play music from Deezer, Use /dplay <song name>
-**/player**  Show current playing song.
-**/help** Show help for commands
-**/playlist** Shows the playlist.
+**/p**  Reply to an audio file or YouTube link to play it or use /p <song name>.
+**/d** Play music from Deezer, Use /d <song name>
+**/c**  Show current playing song.
+**/assistance** Show help for commands
+**/rsm** Shows the playlist.
 
 **Admin Commands**:
-**/skip** [n] ...  Skip current or n where n >= 2
-**/join**  Join voice chat.
-**/leave**  Leave current voice chat
-**/vc**  Check which VC is joined.
-**/stop**  Stop playing.
-**/radio** Start Radio.
-**/stopradio** Stops Radio Stream.
-**/replay**  Play from the beginning.
-**/clean** Remove unused RAW PCM files.
-**/pause** Pause playing.
-**/resume** Resume playing.
+**/sk** [n] ...  Skip current or n where n >= 2
+**/j**  Join voice chat.
+**/l**  Leave current voice chat
+**/rs**  Check which VC is joined.
+**/st**  Stop playing.
+**/r** Start Radio.
+**/sr** Stops Radio Stream.
+**/rp**  Play from the beginning.
+**/cl** Remove unused RAW PCM files.
+**/pa** Pause playing.
+**/re** Resume playing.
 **/volume** Change volume(0-200).
-**/mute**  Mute in VC.
-**/unmute**  Unmute in VC.
-**/restart**Update restarts the Bot.
+**/m**  Mute in VC.
+**/unm**  Unmute in VC.
+**/restart**Restarts the Bot.
 """
 
 
@@ -69,13 +69,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
     admins = await mp.get_admins(Config.CHAT)
     if query.from_user.id not in admins and query.data != "help":
         await query.answer(
-            "😒 Played Joji.mp3",
+            "Loading..",
             show_alert=True
             )
         return
     else:
         await query.answer()
-    if query.data == "replay":
+    if query.data == "rp":
         group_call = mp.group_call
         if not playlist:
             return
@@ -93,16 +93,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🔄", callback_data="replay"),
-                            InlineKeyboardButton("⏯", callback_data="pause"),
-                            InlineKeyboardButton("⏩", callback_data="skip")
+                            InlineKeyboardButton("🔄", callback_data="rp"),
+                            InlineKeyboardButton("⏯", callback_data="pa"),
+                            InlineKeyboardButton("⏩", callback_data="sk")
                             
                         ],
                     ]
                 )
             )
 
-    elif query.data == "pause":
+    elif query.data == "pa":
         if not playlist:
             return
         else:
@@ -115,9 +115,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🔄", callback_data="replay"),
-                            InlineKeyboardButton("⏯", callback_data="resume"),
-                            InlineKeyboardButton("⏩", callback_data="skip")
+                            InlineKeyboardButton("🔄", callback_data="rp"),
+                            InlineKeyboardButton("⏯", callback_data="re"),
+                            InlineKeyboardButton("⏩", callback_data="sk")
                             
                         ],
                     ]
@@ -125,7 +125,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
 
     
-    elif query.data == "resume":   
+    elif query.data == "re":   
         if not playlist:
             return
         else:
@@ -138,16 +138,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🔄", callback_data="replay"),
-                            InlineKeyboardButton("⏯", callback_data="pause"),
-                            InlineKeyboardButton("⏩", callback_data="skip")
+                            InlineKeyboardButton("🔄", callback_data="rp"),
+                            InlineKeyboardButton("⏯", callback_data="pa"),
+                            InlineKeyboardButton("⏩", callback_data="sk")
                             
                         ],
                     ]
                 )
             )
 
-    elif query.data=="skip":   
+    elif query.data=="sk":   
         if not playlist:
             return
         else:
@@ -161,9 +161,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🔄", callback_data="replay"),
-                        InlineKeyboardButton("⏯", callback_data="pause"),
-                        InlineKeyboardButton("⏩", callback_data="skip")
+                        InlineKeyboardButton("🔄", callback_data="rp"),
+                        InlineKeyboardButton("⏯", callback_data="pa"),
+                        InlineKeyboardButton("⏩", callback_data="sk")
                             
                     ],
                 ]
@@ -171,15 +171,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         except:
             pass
-    elif query.data=="help":
+    elif query.data=="assistance":
         buttons = [
-            [
-                InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-                InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
+             [
+                InlineKeyboardButton('🎭 Our Channel 🎭️', url='https://t.me/rsbro'),
             ],
             [
-                InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-                InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
+                InlineKeyboardButton('🤖 Admin', url='https://t.me/ramanveerji'),
+                InlineKeyboardButton('🎟️ Discussion Group', url='https://t.me/joinchat/QsoZgoV2oveZZBCn'),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
