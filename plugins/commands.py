@@ -26,7 +26,7 @@ from config import Config
 U=USERNAME
 CHAT=Config.CHAT
 msg=Config.msg
-HOME_TEXT = "<b>Helo, [{}](tg://user?id={})\n\nIam MusicPlayer 2.0 which plays music in Channels and Groups 24*7.\n\nI can even Stream Youtube Live in Your Voicechat.\n\nDeploy Your Own bot from source code below.\n\nHit /help to know about available commands.</b>"
+HOME_TEXT = "<b>Hello, [{}](tg://user?id={})\n\n• I am A RS DJ BOT\n• I Can Manage Group VC's\n\n• Hit /assistance to know about available commands.</b>"
 HELP = """
 
 <b>Add the bot and User account in your Group with admin rights.
@@ -39,28 +39,28 @@ You can also use /dplay <song name> to play a song from Deezer.</b>
 
 **Common Commands**:
 
-**/play**  Reply to an audio file or YouTube link to play it or use /play <song name>.
-**/dplay** Play music from Deezer, Use /dplay <song name>
-**/player**  Show current playing song.
-**/help** Show help for commands
-**/playlist** Shows the playlist.
+**/p**  Reply to an audio file or YouTube link to play it or use /p <song name>.
+**/d** Play music from Deezer, Use /d <song name>
+**/c**  Show current playing song.
+**/assistance** Show help for commands
+**/rsm** Shows the playlist.
 
 **Admin Commands**:
-**/skip** [n] ...  Skip current or n where n >= 2
-**/join**  Join voice chat.
-**/leave**  Leave current voice chat
-**/vc**  Check which VC is joined.
-**/stop**  Stop playing.
-**/radio** Start Radio.
-**/stopradio** Stops Radio Stream.
-**/replay**  Play from the beginning.
-**/clean** Remove unused RAW PCM files.
-**/pause** Pause playing.
-**/resume** Resume playing.
+**/sk** [n] ...  Skip current or n where n >= 2
+**/j**  Join voice chat.
+**/l**  Leave current voice chat
+**/rs**  Check which VC is joined.
+**/st**  Stop playing.
+**/r** Start Radio.
+**/sr** Stops Radio Stream.
+**/rp**  Play from the beginning.
+**/cl** Remove unused RAW PCM files.
+**/pa** Pause playing.
+**/re** Resume playing.
 **/volume** Change volume(0-200).
-**/mute**  Mute in VC.
-**/unmute**  Unmute in VC.
-**/restart** Update and restarts the Bot.
+**/m**  Mute in VC.
+**/unm**  Unmute in VC.
+**/restart** Restarts the Bot.
 """
 
 
@@ -68,18 +68,13 @@ You can also use /dplay <song name> to play a song from Deezer.</b>
 @Client.on_message(filters.command(['start', f'start@{U}']))
 async def start(client, message):
     buttons = [
-        [
-        InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-        InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
-    ],
     [
-        InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-        InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
-    ],
-    [
-        InlineKeyboardButton('👨🏼‍🦯 Help', callback_data='help'),
-        
-    ]
+                InlineKeyboardButton('🎭 Our Channel 🎭️', url='https://t.me/rsbro'),
+            ],
+            [
+                InlineKeyboardButton('🤖 Admin', url='https://t.me/ramanveerji'),
+                InlineKeyboardButton('🎟️ Discussion Group', url='https://t.me/joinchat/QsoZgoV2oveZZBCn'),
+            ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
     m=await message.reply(HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
@@ -88,22 +83,21 @@ async def start(client, message):
 
 
 
-@Client.on_message(filters.command(["help", f"help@{U}"]))
+@Client.on_message(filters.command(["assistance", f"assistance@{U}"]))
 async def show_help(client, message):
     buttons = [
         [
-            InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-            InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
-        ],
-        [
-            InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-            InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
-        ]
+                InlineKeyboardButton('🎭 Our Channel 🎭️', url='https://t.me/rsbro'),
+            ],
+            [
+                InlineKeyboardButton('🤖 Admin', url='https://t.me/ramanveerji'),
+                InlineKeyboardButton('🎟️ Discussion Group', url='https://t.me/joinchat/QsoZgoV2oveZZBCn'),
+            ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    if msg.get('help') is not None:
-        await msg['help'].delete()
-    msg['help'] = await message.reply_text(
+    if msg.get('assistance') is not None:
+        await msg['assistance'].delete()
+    msg['assistance'] = await message.reply_text(
         HELP,
         reply_markup=reply_markup
         )
