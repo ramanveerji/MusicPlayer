@@ -48,13 +48,12 @@ def stop_and_restart():
     os.system("git pull")
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-
 bot.run(main())
 bot.start()
 
 @bot.on_message(filters.command(["restart", f"restart@{USERNAME}"]) & filters.user(Config.ADMINS) & (filters.chat(CHAT) | filters.private))
 async def restart(client, message):
-    await message.reply_text("🔄 Updating and Restarting...")
+    await message.reply_text("🔄 Restarting...")
     await asyncio.sleep(3)
     try:
         await message.delete()
@@ -80,38 +79,38 @@ bot.send(
         commands=[
             types.BotCommand(
                 command="start",
-                description="Check if bot alive"
+                description="Check if bot is alive"
             ),
             types.BotCommand(
-                command="help",
+                command="assistance",
                 description="Shows help message"
             ),
             types.BotCommand(
-                command="play",
+                command="p",
                 description="Play song from youtube/audiofile"
             ),
             types.BotCommand(
-                command="dplay",
+                command="d",
                 description="Play song from Deezer"
             ),
             types.BotCommand(
-                command="player",
+                command="c",
                 description="Shows current playing song with controls"
             ),
             types.BotCommand(
-                command="playlist",
+                command="rsm",
                 description="Shows the playlist"
             ),
             types.BotCommand(
-                command="skip",
+                command="sk",
                 description="Skip the current song"
             ),
             types.BotCommand(
-                command="join",
+                command="j",
                 description="Join VC"
             ),
             types.BotCommand(
-                command="leave",
+                command="l",
                 description="Leave from VC"
             ),
             types.BotCommand(
@@ -119,35 +118,35 @@ bot.send(
                 description="Ckeck if VC is joined"
             ),
             types.BotCommand(
-                command="stop",
+                command="st",
                 description="Stops Playing"
             ),
             types.BotCommand(
-                command="radio",
+                command="r",
                 description="Start radio / Live stream"
             ),
             types.BotCommand(
-                command="stopradio",
+                command="sr",
                 description="Stops radio/Livestream"
             ),
             types.BotCommand(
-                command="replay",
-                description="Replay from beggining"
+                command="rp",
+                description="Replay from beginning"
             ),
             types.BotCommand(
-                command="clean",
+                command="cl",
                 description="Cleans RAW files"
             ),
             types.BotCommand(
-                command="pause",
+                command="pa",
                 description="Pause the song"
             ),
             types.BotCommand(
-                command="resume",
+                command="re",
                 description="Resume the paused song"
             ),
             types.BotCommand(
-                command="mute",
+                command="m",
                 description="Mute in VC"
             ),
             types.BotCommand(
@@ -155,12 +154,12 @@ bot.send(
                 description="Set volume between 0-200"
             ),
             types.BotCommand(
-                command="unmute",
+                command="unm",
                 description="Unmute in VC"
             ),
             types.BotCommand(
                 command="restart",
-                description="Update and restart the bot"
+                description="Restart the bot"
             )
         ]
     )
