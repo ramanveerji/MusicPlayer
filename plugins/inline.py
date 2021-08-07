@@ -27,23 +27,22 @@ from pyrogram import Client, errors
 from config import Config
 REPLY_MESSAGE=Config.REPLY_MESSAGE
 buttons = [
-    [
-        InlineKeyboardButton('⚡️Make Own Bot', url='https://heroku.com/deploy?template=https://github.com/subinps/MusicPlayer'),
-        InlineKeyboardButton('🧩 Source Code', url='https://github.com/subinps/MusicPlayer'),
-    ],
-    [
-        InlineKeyboardButton('🎧Play Music', url=f'https://t.me/{USERNAME}'),
-        InlineKeyboardButton('👨🏼‍🦯 Help', callback_data='help')       
-    ]
+   [
+                InlineKeyboardButton('🎭 Our Channel 🎭️', url='https://t.me/rsbro'),
+            ],
+            [
+                InlineKeyboardButton('🤖 Admin', url='https://t.me/ramanveerji'),
+                InlineKeyboardButton('🎟️ Discussion Group', url='https://t.me/joinchat/QsoZgoV2oveZZBCn'),
+            ]
     ]
 @Client.on_inline_query()
 async def search(client, query):
     answers = []
-    if query.query == "ORU_MANDAN_PM_VANNU":
+    if query.query == "Game Sidhu Moosewala":
         answers.append(
             InlineQueryResultArticle(
-                title="Deploy",
-                input_message_content=InputTextMessageContent(f"{REPLY_MESSAGE}\n\n<b>You can't use this bot in your group, for that you have to make your own bot from the [SOURCE CODE](https://github.com/subinps/MusicPlayer) below.</b>", disable_web_page_preview=True),
+                title="Say Hello here",
+                input_message_content=InputTextMessageContent(f"{REPLY_MESSAGE}\n\n<b>You can't use this bot in your group, for that you have to ask the admin.</b>", disable_web_page_preview=True),
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
@@ -55,12 +54,18 @@ async def search(client, query):
             query.id,
             results=answers,
             switch_pm_text=("Search a youtube video"),
-            switch_pm_parameter="help",
+            switch_pm_parameter="assistance",
             cache_time=0
         )
     else:
         videosSearch = VideosSearch(string.lower(), limit=50)
-        for v in videosSearch.result()["result"]:
+        for v in videosSearch.result()["resul[
+                InlineKeyboardButton('🎭 Our Channel 🎭️', url='https://t.me/rsbro'),
+            ],
+            [
+                InlineKeyboardButton('🤖 Admin', url='https://t.me/ramanveerji'),
+                InlineKeyboardButton('🎟️ Discussion Group', url='https://t.me/joinchat/QsoZgoV2oveZZBCn'),
+            ]t"]:
             answers.append(
                 InlineQueryResultArticle(
                     title=v["title"],
