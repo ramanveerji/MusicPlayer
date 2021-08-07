@@ -27,10 +27,10 @@ from config import STREAM
 CHAT=Config.CHAT
 ADMINS=Config.ADMINS
 
-@Client.on_message(filters.command(["radio", f"radio@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
+@Client.on_message(filters.command(["r", f"r@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
 async def radio(client, message: Message):
     if 1 in RADIO:
-        k=await message.reply_text("Kindly stop existing Radio Stream /stopradio")
+        k=await message.reply_text("Kindly stop existing Radio Stream /sr")
         await mp.delete(k)
         await mp.delete(message)
         return
@@ -39,10 +39,10 @@ async def radio(client, message: Message):
     await mp.delete(k)
     await mp.delete(message)
 
-@Client.on_message(filters.command(['stopradio', f"stopradio@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
+@Client.on_message(filters.command(['sr', f"sr@{USERNAME}"]) & filters.user(ADMINS) & (filters.chat(CHAT) | filters.private))
 async def stop(_, message: Message):
     if 0 in RADIO:
-        k=await message.reply_text("Kindly start Radio First /radio")
+        k=await message.reply_text("Kindly start Radio First /r")
         await mp.delete(k)
         await mp.delete(message)
         return
